@@ -1,47 +1,60 @@
+/* ═══════════════════════════════════════════════════════
+   Waybar Style for Niri - Minimalist Dark Theme
+   ═══════════════════════════════════════════════════════ */
+
 * {
-    border: none;
-    font-size: 14px;
-    font-family: "JetBrainsMono Nerd Font" ;
-    min-height: 12px;
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+  font-size: 14px;
+  min-height: 0;
 }
-#waybar {
-  background-color: #333333;
-  color: #ffffff;
-}
+
+/* ═══════════════════════════════════════════════════════
+   Main Window
+   ═══════════════════════════════════════════════════════ */
 
 window#waybar {
-  background: transparent;
-  margin: 5px;
- }
-
-#custom-logo {
-  padding: 0 10px;
+  background-color: transparent;
 }
 
+/* ═══════════════════════════════════════════════════════
+   Module Containers
+   ═══════════════════════════════════════════════════════ */
+
+.modules-left,
+.modules-center,
 .modules-right {
-  padding-left: 5px;
-  border-radius: 15px 0 0 15px;
-  margin-top: 2px;
-  background: #000000;
-}
-
-.modules-center {
-  padding: 0 15px;
-  margin-top: 2px;
-  border-radius: 15px 15px 15px 15px;
-  background: #000000;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 12px;
+  padding: 2px 8px;
+  margin: 0 4px;
+  backdrop-filter: blur(10px);
 }
 
 .modules-left {
-  border-radius: 0 15px 15px 0;
-  margin-top: 2px;
-  background: #000000;
+  margin-left: 0;
+  border-radius: 0 12px 12px 0;
 }
 
-#battery,
-#custom-clipboard,
-#custom-colorpicker,
+.modules-right {
+  margin-right: 0;
+  border-radius: 12px 0 0 12px;
+}
+
+.modules-center {
+  border-radius: 12px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Module Styling
+   ═══════════════════════════════════════════════════════ */
+
+#custom-logo,
 #custom-powerdown,
+#custom-clipboard,
+#custom-updates,
+#battery,
 #bluetooth,
 #pulseaudio,
 #network,
@@ -50,84 +63,333 @@ window#waybar {
 #backlight,
 #cpu,
 #temperature,
-#custom-weather,
 #idle_inhibitor,
-#jack,
 #tray,
 #window,
 #workspaces,
-#clock {
-  padding: 0 5px;
-}
-#pulseaudio {
-  padding-top: 3px;
+#clock,
+#language {
+  padding: 4px 8px;
+  margin: 0 2px;
+  color: #ffffff;
+  transition: all 0.3s ease;
 }
 
-#temperature.critical,
-#pulseaudio.muted {
-  color: #FF0000;
-  padding-top: 0;
-}
-#clock{
+/* ═══════════════════════════════════════════════════════
+   Custom Logo & Power
+   ═══════════════════════════════════════════════════════ */
+
+#custom-logo {
   color: #5fd1fa;
+  font-size: 18px;
+  padding: 4px 12px;
 }
 
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
+#custom-logo:hover {
+  color: #7aa2f7;
+  background-color: rgba(95, 209, 250, 0.15);
+  border-radius: 8px;
 }
 
-#battery.warning:not(.charging) {
-    background-color: #ffbe61;
-    color: black;
+#custom-powerdown {
+  color: #f7768e;
+  font-size: 16px;
+  padding: 4px 12px;
 }
 
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+#custom-powerdown:hover {
+  color: #ff7a93;
+  background-color: rgba(247, 118, 142, 0.15);
+  border-radius: 8px;
 }
+
+/* ═══════════════════════════════════════════════════════
+   Workspaces
+   ═══════════════════════════════════════════════════════ */
 
 #workspaces {
-    border: double 2px transparent;
-    border-radius: 12px;
-    background-image: linear-gradient(@bg, @bg),
-                      linear-gradient(45deg, @bright-magenta, @bright-blue);
-    background-origin: border-box;
-    background-clip: content-box, border-box;
-  
-    margin-top: 6px;
-    margin-bottom: 6px;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(95, 209, 250, 0.1);
+  border-radius: 10px;
+  border: 2px solid rgba(95, 209, 250, 0.3);
 }
-    
+
 #workspaces button {
-    padding: 0 0.4em;
-    border-radius: 0;
-    background-color: transparent;
-    color: #ffffff;
-    box-shadow: inset 0 -3px transparent;
+  padding: 4px 10px;
+  margin: 0;
+  background-color: transparent;
+  color: #888888;
+  border-radius: 0;
+  transition: all 0.3s ease;
 }
+
+#workspaces button:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+#workspaces button:last-child {
+  border-radius: 0 8px 8px 0;
+}
+
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -3px #5fd1fa;
+  background-color: rgba(95, 209, 250, 0.2);
+  color: #5fd1fa;
+  box-shadow: inset 0 -2px 0 #5fd1fa;
 }
- 
-#workspaces button.focused {
-   background-color: #64727D;
-   box-shadow: inset 0 -3px #5fd1fa;
+
+#workspaces button.active {
+  background-color: rgba(95, 209, 250, 0.25);
+  color: #5fd1fa;
+  font-weight: bold;
+  box-shadow: inset 0 -3px 0 #5fd1fa;
 }
 
 #workspaces button.urgent {
-   background-color: #eb4d4b;
+  background-color: rgba(247, 118, 142, 0.3);
+  color: #f7768e;
+  animation: urgent-blink 1s ease infinite;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+@keyframes urgent-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Window Title
+   ═══════════════════════════════════════════════════════ */
+
+#window {
+  color: #c0caf5;
+  font-weight: 500;
+  padding: 4px 12px;
+}
+
+#window.empty {
+  padding: 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Language
+   ═══════════════════════════════════════════════════════ */
+
+#language {
+  color: #bb9af7;
+  font-weight: 600;
+  padding: 4px 10px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Clock
+   ═══════════════════════════════════════════════════════ */
+
+#clock {
+  color: #5fd1fa;
+  font-weight: 700;
+  padding: 4px 12px;
+  background-color: rgba(95, 209, 250, 0.1);
+  border-radius: 8px;
+}
+
+#clock:hover {
+  background-color: rgba(95, 209, 250, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════
+   System Info Modules
+   ═══════════════════════════════════════════════════════ */
+
+#cpu {
+  color: #7dcfff;
+}
+
+#cpu:hover {
+  background-color: rgba(125, 207, 255, 0.15);
+  border-radius: 8px;
+}
+
+#memory {
+  color: #bb9af7;
+}
+
+#memory:hover {
+  background-color: rgba(187, 154, 247, 0.15);
+  border-radius: 8px;
+}
+
+#disk {
+  color: #9ece6a;
+}
+
+#disk:hover {
+  background-color: rgba(158, 206, 106, 0.15);
+  border-radius: 8px;
+}
+
+#temperature {
+  color: #e0af68;
+}
+
+#temperature.critical {
+  color: #f7768e;
+  background-color: rgba(247, 118, 142, 0.2);
+  border-radius: 8px;
+  animation: temp-blink 0.5s ease infinite;
+}
+
+@keyframes temp-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Updates
+   ═══════════════════════════════════════════════════════ */
+
+#custom-updates {
+  color: #ff9e64;
+}
+
+#custom-updates:hover {
+  background-color: rgba(255, 158, 100, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Clipboard
+   ═══════════════════════════════════════════════════════ */
+
+#custom-clipboard {
+  color: #7aa2f7;
+  font-size: 16px;
+}
+
+#custom-clipboard:hover {
+  background-color: rgba(122, 162, 247, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Audio
+   ═══════════════════════════════════════════════════════ */
+
+#pulseaudio {
+  color: #9ece6a;
+}
+
+#pulseaudio.muted {
+  color: #f7768e;
+}
+
+#pulseaudio:hover {
+  background-color: rgba(158, 206, 106, 0.15);
+  border-radius: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Network
+   ═══════════════════════════════════════════════════════ */
+
+#network {
+  color: #7dcfff;
+}
+
+#network.disconnected {
+  color: #f7768e;
+}
+
+#network:hover {
+  background-color: rgba(125, 207, 255, 0.15);
+  border-radius: 8px;
+}
+
+#network.speed {
+  color: #73daca;
+  font-size: 12px;
+  padding: 4px 6px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Tray
+   ═══════════════════════════════════════════════════════ */
+
+#tray {
+  padding: 4px 6px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: rgba(247, 118, 142, 0.2);
+  border-radius: 8px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Battery (if needed)
+   ═══════════════════════════════════════════════════════ */
+
+#battery {
+  color: #9ece6a;
+}
+
+#battery.charging {
+  color: #73daca;
+}
+
+#battery.warning:not(.charging) {
+  color: #e0af68;
+  background-color: rgba(224, 175, 104, 0.15);
+  border-radius: 8px;
+}
+
+#battery.critical:not(.charging) {
+  color: #f7768e;
+  background-color: rgba(247, 118, 142, 0.2);
+  border-radius: 8px;
+  animation: battery-blink 0.5s ease infinite;
+}
+
+@keyframes battery-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Tooltips
+   ═══════════════════════════════════════════════════════ */
+
+tooltip {
+  background-color: rgba(0, 0, 0, 0.95);
+  border: 2px solid rgba(95, 209, 250, 0.3);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+tooltip label {
+  color: #c0caf5;
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+/* ═══════════════════════════════════════════════════════
+   Group Drawers
+   ═══════════════════════════════════════════════════════ */
+
+#audio,
+#networking {
+  padding: 0;
+  margin: 0;
+}
+
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
 }
