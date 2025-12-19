@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 30,
+  "height": 37,
   "margin": "5 10 0 10",
   
   "modules-left": [
@@ -55,7 +55,7 @@
     "format": " {}",
     "tooltip": true,
     "tooltip-format": "{} updates available",
-    "on-click": "alacritty -e yay -Syu"
+    "on-click": "alacritty -e paru -Syu"
   },
 
   "custom/clipboard": {
